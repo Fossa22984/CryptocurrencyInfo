@@ -1,15 +1,16 @@
-﻿using System.Windows;
+﻿using CryptocurrencyInfo.Pages;
+using System.Windows;
 
 namespace CryptocurrencyInfo
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            var page = App.ServiceProviderManager.GetService<MainPage>();
+            Frame.Navigate(page);
         }
     }
 }

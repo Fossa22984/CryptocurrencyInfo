@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrencyInfo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" MinHeight="550" Height="550" MinWidth="820" Width="820" Style="{DynamicResource WindowStyle}">
+    <Grid >
+        <Grid HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="35,5">
+                <ComboBox x:Name="styleBox" BorderBrush="#FFC84848" BorderThickness="2" Background="#FFD6F3EF" MinWidth="45"></ComboBox>
+                <Button  BorderBrush="Black" BorderThickness="2" Background="#FFD6F3EF" MinWidth="125"></Button>
 
+            </StackPanel>
+        </Grid>
+        <Frame Name="Frame" Margin="35" Background="#FF35BBA8" BorderBrush="Black" BorderThickness="2" NavigationUIVisibility="Visible" OpacityMask="#FFBF2B2B"/>
     </Grid>
 </Window>
