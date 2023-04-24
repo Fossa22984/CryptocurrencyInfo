@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using Models.SettingsModels;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -7,14 +9,15 @@ namespace CryptocurrencyInfo.ViewModels
 {
     public class ApplicationViewModel : BaseViewModel
     {
-        private ObservableCollection<string> _themes;
-        public ObservableCollection<string> Themes
-        {
-            get => _themes;
-            set => Set(ref _themes, value);
-        }
 
+        private readonly ApplicationOptions _applicationOptions;
+        private ObservableCollection<string> _themes;
         private string _slectedTheme;
+
+        public delegate void SelectedThemesDelegate(string theme);
+        public event SelectedThemesDelegate SelectedThemesEvent;
+
+        public ObservableCollection<string> Themes { get => _themes; set => Set(ref _themes, value); }
         public string SlectedTheme
         {
             get => _slectedTheme;
@@ -25,12 +28,10 @@ namespace CryptocurrencyInfo.ViewModels
             }
         }
 
-        public delegate void SelectedThemesDelegate(string theme);
-        public event SelectedThemesDelegate SelectedThemesEvent;
-
         public ApplicationViewModel()
         {
-            Themes = new ObservableCollection<string> { "Light", "Dark" };
+            _applicationOptions = App.ServiceProviderManager.GetService<IOptions<ApplicationOptions>>().Value;
+            Themes = new ObservableCollection<string>(_applicationOptions.ListOfThemes);
             SlectedTheme = Themes.First();
             SelectedThemesEvent += OnSelectedTheme;
             OnSelectedTheme(SlectedTheme);

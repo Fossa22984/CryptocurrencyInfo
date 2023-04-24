@@ -1,5 +1,7 @@
 ﻿using BL.CoinCapApi.Services.Interfaces;
+using Microsoft.Extensions.Options;
 using Models.CoinCapApiModels;
+using Models.SettingsModels;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 
@@ -8,11 +10,13 @@ namespace BL.CoinCapApi.Services
     public class CoinCapService : ICoinCapService
     {
         private readonly HttpClient _client;
+        private readonly CoinCapApiOption _coinCupOptions;
 
-        public CoinCapService()
+        public CoinCapService(IOptions<CoinCapApiOption> coinCupOptions)
         {
+            _coinCupOptions = coinCupOptions.Value;
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://api.coincap.io/v2/");
+            _client.BaseAddress = new Uri(_coinCupOptions.Url);
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -22,7 +26,7 @@ namespace BL.CoinCapApi.Services
         {
             var response = await _client.GetAsync($"assets?limit={limit}");
             if (!response.IsSuccessStatusCode)
-                throw new Exception();
+                throw new Exception("Cannot get cryptocurrences!");
 
             try
             {
@@ -30,9 +34,9 @@ namespace BL.CoinCapApi.Services
                 var cryptocurrences = JsonConvert.DeserializeObject<AssetsResponceApiModel>(res);
                 return cryptocurrences;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw;
+                throw new Exception("Cannot get cryptocurrences!");
             }
         }
 
@@ -40,7 +44,7 @@ namespace BL.CoinCapApi.Services
         {
             var response = await _client.GetAsync($"assets?limit={limit}&search={search}");
             if (!response.IsSuccessStatusCode)
-                throw new Exception();
+                throw new Exception("Cannot get cryptocurrences!");
 
             try
             {
@@ -48,9 +52,9 @@ namespace BL.CoinCapApi.Services
                 var cryptocurrences = JsonConvert.DeserializeObject<AssetsResponceApiModel>(res);
                 return cryptocurrences;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw;
+                throw new Exception("Cannot get cryptocurrences!");
             }
 
         }
@@ -60,7 +64,7 @@ namespace BL.CoinCapApi.Services
             var response = await _client.GetAsync($"candles?exchange={exchange}&interval={interval}&baseId={baseId}&quoteId={quoteId}");
 
             if (!response.IsSuccessStatusCode)
-                throw new Exception();
+                throw new Exception("Cannot get candles!");
 
             try
             {
@@ -70,7 +74,7 @@ namespace BL.CoinCapApi.Services
             }
             catch (Exception)
             {
-                throw;
+                throw new Exception("Cannot get candles!");
             }
         }
 
@@ -79,7 +83,7 @@ namespace BL.CoinCapApi.Services
             var response = await _client.GetAsync($"assets/{idCryptocurrency}/markets?limit=50");
 
             if (!response.IsSuccessStatusCode)
-                throw new Exception();
+                throw new Exception("Cannot get markets!");
             try
             {
                 var res = await response.Content.ReadAsStringAsync();
@@ -88,7 +92,7 @@ namespace BL.CoinCapApi.Services
             }
             catch (Exception)
             {
-                throw;
+                throw new Exception("Cannot get markets!");
             }
         }
 
@@ -97,7 +101,7 @@ namespace BL.CoinCapApi.Services
             var response = await _client.GetAsync($"exchanges/{idExchange}");
 
             if (!response.IsSuccessStatusCode)
-                throw new Exception();
+                throw new Exception("Cannot get market info!");
 
             try
             {
@@ -105,9 +109,9 @@ namespace BL.CoinCapApi.Services
                 var exchange = JsonConvert.DeserializeObject<ExchangesResponceByIdApiModel>(res);
                 return exchange;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw;
+                throw new Exception("Cannot get market info!");
             }
         }
     }

@@ -24,6 +24,8 @@ namespace CryptocurrencyInfo.Pages
             _appCacheManager.SelectedCryptocurrency = (DataContext as MainViewModel).SelectedCryptocurrency;
             var page = App.ServiceProviderManager.GetService<CryptocurrencyInfoPage>();
             NavigationService.Navigate(page);
+
+
         }
     }
 }

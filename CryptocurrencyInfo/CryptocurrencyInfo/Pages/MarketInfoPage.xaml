@@ -7,20 +7,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MarketInfo" Style="{DynamicResource PageStyle}">
-    <StackPanel DataContext="{Binding SelectedMarket}" HorizontalAlignment="Center" Margin="5" Orientation="Horizontal" VerticalAlignment="Center">
-        <StackPanel Margin="5">
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ExchangeId, StringFormat={}Name -> {0}}" ></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=BaseId, StringFormat={}Base -> {0}}" ></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=QuoteId, StringFormat={}Quote -> {0}}"></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Supply, StringFormat={}Supply -> {0}}"></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumePercent, StringFormat={}VolumePercent -> {0}}"></TextBlock>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Right" Margin="50,5,5,5">
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Rank, StringFormat={}Rank -> {0}}"></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=PercentTotalVolume, StringFormat={}PercentTotalVolume -> {0}}"></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumeUsd, StringFormat={}Volume(Usd) -> {0}}"></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=TradingPairs, StringFormat={}TradingPairs -> {0}}"></TextBlock>
-            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ExchangeUrl, StringFormat={}ExchangeUrl -> {0}}"></TextBlock>
-        </StackPanel>
+    <StackPanel Margin="5" DataContext="{Binding SelectedMarket}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Path=Rank, StringFormat={}Rank -> {0}}" ></TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Path=ExchangeId, StringFormat={}Name -> {0}}" ></TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left"  MaxWidth="240"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=PercentTotalVolume, StringFormat={}Percent Total Volume -> {0}}"></TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left"  MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumeUsd, StringFormat={}Volume(Usd) -> {0}}"></TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Path=TradingPairs, StringFormat={}Trading Pairs -> {0}}"></TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Path=ExchangeUrl, StringFormat={}ExchangeUrl -> {0}}"></TextBlock>
+
+        <TextBlock Margin="0,20,0,0" Style="{DynamicResource TextBlockStyle}" FontSize="16" MaxWidth="400"  TextTrimming="CharacterEllipsis">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}({2}) -> {1}({3}) = {4}">
+                    <Binding Path="BaseId" />
+                    <Binding Path="QuoteId" />
+                    <Binding Path="BaseSymbol" />
+                    <Binding Path="QuoteSymbol" />
+                    <Binding Path="PriceUsd" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left" MaxWidth="210"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumePercent, StringFormat={}Volume(USD/24Hr) -> {0}}"></TextBlock>
+        <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Left" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumePercent, StringFormat={}Volume Percent -> {0}}"></TextBlock>
     </StackPanel>
 </Page>

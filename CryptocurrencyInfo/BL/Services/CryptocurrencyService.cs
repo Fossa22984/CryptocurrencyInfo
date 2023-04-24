@@ -3,13 +3,6 @@ using BL.CoinCapApi.Services.Interfaces;
 using BL.Services.Interfaces;
 using Models.CoinCapApiModels;
 using Models.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BL.Services
 {

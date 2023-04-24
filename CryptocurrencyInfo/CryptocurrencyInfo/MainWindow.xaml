@@ -15,7 +15,6 @@
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="35,5">
                 <ComboBox ItemsSource="{Binding Themes}" SelectedItem="{Binding Path=SlectedTheme}" SelectedIndex="0" x:Name="styleBox"  BorderThickness="2"  Width="60" ></ComboBox>
-                <Button  BorderBrush="Black" BorderThickness="2" Background="#FFD6F3EF" MinWidth="125"></Button>
             </StackPanel>
         </Grid>
         <Frame Name="Frame" Margin="35,35,35,0"  BorderBrush="Black" BorderThickness="2,2,2,0"  NavigationUIVisibility="Visible" Background="White" />
