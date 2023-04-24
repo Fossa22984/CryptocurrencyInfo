@@ -4,9 +4,9 @@ namespace Models.CoinCapApiModels
 {
     public class MarketsResponceApiModel
     {
-        [JsonProperty("data")] public List<Market> Markets { get; set; }
+        [JsonProperty("data")] public List<MarketApiModel> Markets { get; set; }
     }
-    public class Market
+    public class MarketApiModel
     {
         [JsonProperty("exchangeId")] public string ExchangeId { get; set; }
         [JsonProperty("baseId")] public string BaseId { get; set; }

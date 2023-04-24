@@ -4,9 +4,9 @@ namespace Models.CoinCapApiModels
 {
     public class AssetsResponceApiModel
     {
-        [JsonProperty("data")] public List<Cryptocurrency> Cryptocurrencies { get; set; }
+        [JsonProperty("data")] public List<CryptocurrencyApiModel> Cryptocurrencies { get; set; }
     }
-    public class Cryptocurrency
+    public class CryptocurrencyApiModel
     {
         [JsonProperty("id")] public string Id { get; set; }
         [JsonProperty("rank")] public string Rank { get; set; }

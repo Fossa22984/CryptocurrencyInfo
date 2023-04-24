@@ -4,9 +4,9 @@ namespace Models.CoinCapApiModels
 {
     public class ExchangesResponceByIdApiModel
     {
-        [JsonProperty("data")] public Exchange Exchange { get; set; }
+        [JsonProperty("data")] public ExchangeApiModel Exchange { get; set; }
     }
-    public class Exchange
+    public class ExchangeApiModel
     {
         [JsonProperty("exchangeId")] public string Id { get; set; }
         [JsonProperty("name")] public string Name { get; set; }

@@ -1,4 +1,5 @@
 ﻿using CryptocurrencyInfo.Pages;
+using CryptocurrencyInfo.ViewModels;
 using System.Windows;
 
 namespace CryptocurrencyInfo
@@ -11,6 +12,8 @@ namespace CryptocurrencyInfo
 
             var page = App.ServiceProviderManager.GetService<MainPage>();
             Frame.Navigate(page);
+
+            DataContext = new ApplicationViewModel();
         }
     }
 }

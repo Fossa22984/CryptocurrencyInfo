@@ -7,10 +7,10 @@
       xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CryptocurrencyInfo">
-    <Grid Background="Azure" Margin="5">
+      Title="CryptocurrencyInfo" Style="{DynamicResource PageStyle}">
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2.6*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -22,18 +22,18 @@
 
             <StackPanel DataContext="{Binding SelectedCryptocurrency}" HorizontalAlignment="Center" Margin="5" Orientation="Horizontal">
                 <StackPanel Margin="5">
-                    <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Rank, StringFormat={}Rank -> {0}}" ></TextBlock>
-                    <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Symbol, StringFormat={}Symbol -> {0}}" ></TextBlock>
-                    <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Name, StringFormat={}Name -> {0}}"></TextBlock>
-                    <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Supply, StringFormat={}Supply -> {0}}"></TextBlock>
-                    <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=MaxSupply, StringFormat={}MaxSupply -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Rank, StringFormat={}Rank -> {0}}" ></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Symbol, StringFormat={}Symbol -> {0}}" ></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Name, StringFormat={}Name -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Supply, StringFormat={}Supply -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=MaxSupply, StringFormat={}MaxSupply -> {0}}"></TextBlock>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Margin="50,5,5,5">
-                    <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=MarketCapUsd, StringFormat={}MarketCapUsd -> {0}}"></TextBlock>
-                    <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumeUsd24Hr, StringFormat={}Volume(Usd/24Hr) -> {0}}"></TextBlock>
-                    <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=PriceUsd, StringFormat={}Price(Usd) -> {0}}"></TextBlock>
-                    <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ChangePercent24Hr, StringFormat={}ChangePercent24Hr -> {0}}"></TextBlock>
-                    <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Vwap24Hr, StringFormat={}Vwap24Hr -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=MarketCapUsd, StringFormat={}MarketCapUsd -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumeUsd24Hr, StringFormat={}Volume(Usd/24Hr) -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=PriceUsd, StringFormat={}Price(Usd) -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ChangePercent24Hr, StringFormat={}ChangePercent24Hr -> {0}}"></TextBlock>
+                    <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Vwap24Hr, StringFormat={}Vwap24Hr -> {0}}"></TextBlock>
                 </StackPanel>
             </StackPanel>
 
@@ -48,12 +48,12 @@
             ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,8,8">
-                        <DockPanel  Margin="5"  Width="100" Height="100">
-                            
-                            <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=PriceUsd}" MaxWidth="80"  TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" />
+                    <Border Style="{DynamicResource BorderStyle}">
+                        <DockPanel Margin="5" Width="100" Height="100">
+
+                            <TextBlock Style="{DynamicResource TextBlockStyle}" DockPanel.Dock="Bottom" Text="{Binding Path=PriceUsd}" MaxWidth="80"  TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" />
                             <StackPanel DockPanel.Dock="Bottom">
-                                <TextBlock HorizontalAlignment="Center" >
+                                <TextBlock Style="{DynamicResource TextBlockStyle}" HorizontalAlignment="Center" >
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{1} -> {0}">
                                             <Binding Path="BaseSymbol" />
@@ -63,7 +63,7 @@
                                 </TextBlock>
                             </StackPanel>
 
-                            <TextBlock FontSize="18" TextWrapping="Wrap" Text="{Binding ExchangeId}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"></TextBlock>
+                            <TextBlock Style="{DynamicResource TextBlockStyle}" FontSize="18" TextWrapping="Wrap" Text="{Binding ExchangeId}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"></TextBlock>
                        
                         </DockPanel>
                     </Border>

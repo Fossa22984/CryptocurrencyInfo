@@ -4,9 +4,9 @@ namespace Models.CoinCapApiModels
 {
     public class CandlesResponceApiModel
     {
-        [JsonProperty("data")] public List<Candle> Candles { get; set; }
+        [JsonProperty("data")] public List<CandleApiModel> Candles { get; set; }
     }
-    public class Candle
+    public class CandleApiModel
     {
         [JsonProperty("open")] public string Open { get; set; }
         [JsonProperty("high")] public string High { get; set; }

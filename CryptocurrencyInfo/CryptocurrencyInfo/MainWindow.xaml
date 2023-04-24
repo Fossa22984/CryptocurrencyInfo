@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrencyInfo"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="550" Height="550" MinWidth="820" Width="820" Style="{DynamicResource WindowStyle}">
+        Title="CryptocurrencyInfo" MinHeight="550" Height="550" MinWidth="820" Width="820" Style="{DynamicResource WindowStyle}">
     <Grid >
         <Grid HorizontalAlignment="Left">
             <Grid.RowDefinitions>
@@ -14,11 +14,10 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="35,5">
-                <ComboBox x:Name="styleBox" BorderBrush="#FFC84848" BorderThickness="2" Background="#FFD6F3EF" MinWidth="45"></ComboBox>
+                <ComboBox ItemsSource="{Binding Themes}" SelectedItem="{Binding Path=SlectedTheme}" SelectedIndex="0" x:Name="styleBox"  BorderThickness="2"  Width="60" ></ComboBox>
                 <Button  BorderBrush="Black" BorderThickness="2" Background="#FFD6F3EF" MinWidth="125"></Button>
-
             </StackPanel>
         </Grid>
-        <Frame Name="Frame" Margin="35" Background="#FF35BBA8" BorderBrush="Black" BorderThickness="2" NavigationUIVisibility="Visible" OpacityMask="#FFBF2B2B"/>
+        <Frame Name="Frame" Margin="35,35,35,0"  BorderBrush="Black" BorderThickness="2,2,2,0"  NavigationUIVisibility="Visible" Background="White" />
     </Grid>
 </Window>

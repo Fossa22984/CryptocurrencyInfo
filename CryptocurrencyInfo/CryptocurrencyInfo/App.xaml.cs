@@ -1,4 +1,9 @@
-﻿using BL.CoinCapApi.Services;
+﻿using AutoMapper;
+using BL.CoinCapApi.Services;
+using BL.CoinCapApi.Services.Interfaces;
+using BL.Services;
+using BL.Services.Interfaces;
+using CryptocurrencyInfo.Config;
 using CryptocurrencyInfo.Managers;
 using CryptocurrencyInfo.Managers.Interfaces;
 using CryptocurrencyInfo.Pages;
@@ -27,8 +32,13 @@ namespace CryptocurrencyInfo
             service.AddTransient(typeof(CryptocurrencyInfoPage));
             service.AddTransient(typeof(MarketInfoPage));
             service.AddSingleton(typeof(AppCacheManager));
-            service.AddSingleton<CoinCapService>();
+
             service.AddSingleton<IServiceProviderManager, ServiceProviderManager>();
+            
+            service.AddTransient<ICoinCapService, CoinCapService>();
+            service.AddTransient<ICryptocurrencyService, CryptocurrencyService>();
+
+            service.AddSingleton(AutoMapperProfile.GetMapper());
         }
     }
 }

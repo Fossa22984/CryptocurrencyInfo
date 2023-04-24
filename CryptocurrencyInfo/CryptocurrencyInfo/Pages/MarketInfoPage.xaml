@@ -6,21 +6,21 @@
       xmlns:local="clr-namespace:CryptocurrencyInfo.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MarketInfo" Background="Azure">
+      Title="MarketInfo" Style="{DynamicResource PageStyle}">
     <StackPanel DataContext="{Binding SelectedMarket}" HorizontalAlignment="Center" Margin="5" Orientation="Horizontal" VerticalAlignment="Center">
         <StackPanel Margin="5">
-            <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ExchangeId, StringFormat={}Name -> {0}}" ></TextBlock>
-            <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=BaseId, StringFormat={}Base -> {0}}" ></TextBlock>
-            <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=QuoteId, StringFormat={}Quote -> {0}}"></TextBlock>
-            <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Supply, StringFormat={}Supply -> {0}}"></TextBlock>
-            <TextBlock MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumePercent, StringFormat={}VolumePercent -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ExchangeId, StringFormat={}Name -> {0}}" ></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=BaseId, StringFormat={}Base -> {0}}" ></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=QuoteId, StringFormat={}Quote -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Supply, StringFormat={}Supply -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="200"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumePercent, StringFormat={}VolumePercent -> {0}}"></TextBlock>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Margin="50,5,5,5">
-            <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Rank, StringFormat={}Rank -> {0}}"></TextBlock>
-            <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=PercentTotalVolume, StringFormat={}PercentTotalVolume -> {0}}"></TextBlock>
-            <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumeUsd, StringFormat={}Volume(Usd) -> {0}}"></TextBlock>
-            <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=TradingPairs, StringFormat={}TradingPairs -> {0}}"></TextBlock>
-            <TextBlock MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ExchangeUrl, StringFormat={}ExchangeUrl -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=Rank, StringFormat={}Rank -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=PercentTotalVolume, StringFormat={}PercentTotalVolume -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=VolumeUsd, StringFormat={}Volume(Usd) -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=TradingPairs, StringFormat={}TradingPairs -> {0}}"></TextBlock>
+            <TextBlock Style="{DynamicResource TextBlockStyle}" MaxWidth="250"  TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=ExchangeUrl, StringFormat={}ExchangeUrl -> {0}}"></TextBlock>
         </StackPanel>
     </StackPanel>
 </Page>
