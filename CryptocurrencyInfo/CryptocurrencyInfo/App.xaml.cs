@@ -16,39 +16,20 @@ namespace CryptocurrencyInfo
     public partial class App : Application
     {
         public static IServiceProviderManager ServiceProviderManager { get; set; }
-        public IConfiguration Config { get; private set; }
         protected override void OnStartup(StartupEventArgs e)
         {
-            Config = new ConfigurationBuilder()
+            var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
 
             var serviceCollection = new ServiceCollection();
-            ConfigrationService(serviceCollection);
+            var diConfiguration = new DIConfiguration();
+            diConfiguration.RegisterAll(ref serviceCollection, config);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             ServiceProviderManager = serviceProvider.GetRequiredService<IServiceProviderManager>();
 
             serviceProvider.GetRequiredService<MainWindow>().Show();
-        }
-        private void ConfigrationService(IServiceCollection service)
-        {
-            service.Configure<CoinCapApiOption>(Config.GetSection("CoinCapApiOptions"));
-            service.Configure<ApplicationOptions>(Config.GetSection("ApplicationOptions"));
-
-            service.AddTransient(typeof(MainWindow));
-            service.AddTransient(typeof(MainPage));
-            service.AddTransient(typeof(CryptocurrencyInfoPage));
-            service.AddTransient(typeof(MarketInfoPage));
-            service.AddSingleton(typeof(AppCacheManager));
-
-            service.AddSingleton<IServiceProviderManager, ServiceProviderManager>();
-
-            service.AddTransient<ICoinCapService, CoinCapService>();
-            service.AddTransient<ICryptocurrencyService, CryptocurrencyService>();
-
-            service.AddSingleton(AutoMapperProfile.GetMapper());
-
         }
     }
 }
